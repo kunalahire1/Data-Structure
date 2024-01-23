@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Solution {
+   static boolean areAnagram(String c1, String c2) {
+      int s1=c1.length();
+       int s2=c2.length();
+       if(s1!=s2)
+       {
+           return false;
+       }
+       int arr[]=new int[26];
+       for(int i=0;i<c1.length();i++)
+           {
+               arr[c1.charAt(i)-'a']++;
+           }
+       for(int i=0;i<c2.length();i++)
+           {
+               arr[c2.charAt(i)-'a']--;
+               if(arr[c2.charAt(i)-'a']<0)
+               {
+                   return false;
+               }
+           }
+       return true;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str1 = sc.nextLine();
+        String str2 = sc.nextLine();
+        Solution Obj = new Solution();
+        
+        if (Obj.areAnagram(str1, str2))
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}
