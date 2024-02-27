@@ -1,0 +1,90 @@
+import java.util.*;
+
+class Node {
+    int val;
+    Node left, right;
+    public Node(int item){
+        val = item;
+        left = right = null;
+    }
+}
+
+class BinarySearchTree
+{
+    Node constructBST(int[] arr, int start, int end, Node root)
+    {
+        if (start > end) return null;
+        int mid = (start + end) / 2;
+        if (root == null) root = new Node(arr[mid]);
+        root.left = constructBST(arr, start, mid - 1, root.left);
+        root.right = constructBST(arr, mid + 1, end, root.right);
+        return root;
+    }
+}
+
+class Solution{
+    public static boolean checkTarget(Node root, int k){
+        Stack<Node> leftStack = new Stack<>();
+        Stack<Node> rightStack = new Stack<>();
+        Node leftCurr = root;
+        Node rightCurr = root;
+
+        // Initialize left pointer
+        while (leftCurr != null) {
+            leftStack.push(leftCurr);
+            leftCurr = leftCurr.left;
+        }
+
+        // Initialize right pointer
+        while (rightCurr != null) {
+            rightStack.push(rightCurr);
+            rightCurr = rightCurr.right;
+        }
+
+        // Two pointer approach
+        while (!leftStack.isEmpty() && !rightStack.isEmpty() && leftStack.peek() != rightStack.peek()) {
+            int sum = leftStack.peek().val + rightStack.peek().val;
+            if (sum == k) {
+                return true;
+            } else if (sum < k) {
+                // Move left pointer to the right
+                leftCurr = leftStack.pop().right;
+                while (leftCurr != null) {
+                    leftStack.push(leftCurr);
+                    leftCurr = leftCurr.left;
+                }
+            } else {
+                // Move right pointer to the left
+                rightCurr = rightStack.pop().left;
+                while (rightCurr != null) {
+                    rightStack.push(rightCurr);
+                    rightCurr = rightCurr.right;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Throwable {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++){
+            arr[i] = sc.nextInt(); 
+        }
+        Node root = null;
+        BinarySearchTree bst = new BinarySearchTree();
+        root = bst.constructBST(arr, 0, n - 1, root);
+        Solution A = new Solution();
+        boolean ans = A.checkTarget(root, k);
+        if(ans == true){
+            System.out.println("true");
+        } else {
+            System.out.println("false");
+        }
+    }
+}
