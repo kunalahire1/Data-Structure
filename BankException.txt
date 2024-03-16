@@ -1,0 +1,36 @@
+package com.Exception;
+
+import java.util.Scanner;
+
+public class DailyLimitException {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter amount");
+        int amount=sc.nextInt();
+        try{
+            bank(amount);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        System.out.println("end");
+    }
+    public static void bank(int amount) throws  Exception{
+        if(amount>20000)
+        {
+            throw new DailyLimitCrossed("you crossed daily limit");
+        }
+        else
+        {
+            System.out.println("Withdraw successfully");
+        }
+
+    }
+}
+class DailyLimitCrossed extends Exception{
+    DailyLimitCrossed(String msg)
+    {
+        System.out.println(msg);
+    }
+}
