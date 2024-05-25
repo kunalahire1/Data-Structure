@@ -1,0 +1,73 @@
+import java.util.*;
+
+class Solution {
+    void pairWiseSwap(Node head) {
+        if (head == null || head.next == null) return;
+
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node prev = dummy;
+
+        while (head != null && head.next != null) {
+            Node first = head;
+            Node second = head.next;
+
+            // Swapping
+            first.next = second.next;
+            second.next = first;
+            prev.next = second;
+
+            // Reinitializing the pointers for next swap
+            prev = first;
+            head = first.next;
+        }
+
+        // Print the list after swapping
+        Node current = dummy.next;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Throwable {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            LinkedList llist = new LinkedList();
+            int a1 = sc.nextInt();
+            Node head = new Node(a1);
+            llist.addToTheLast(head);
+            for (int i = 1; i < n; i++) {
+                int a = sc.nextInt();
+                llist.addToTheLast(new Node(a));
+            }
+            Solution A = new Solution();
+            A.pairWiseSwap(llist.head);
+        }
+    }
+}
+
+class Node {
+    int data;
+    Node next;
+    Node(int d) { data = d; next = null; }
+}
+
+class LinkedList {
+    Node head;
+    Node tail;
+    public void addToTheLast(Node node) {
+        if (head == null) {
+            head = node;
+            tail = node;
+        } else {
+            tail.next = node;
+            tail = node;
+        }
+    }
+}
