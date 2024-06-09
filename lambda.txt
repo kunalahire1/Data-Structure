@@ -1,0 +1,13 @@
+interface student{
+    String st1();
+}
+public class Main
+{
+	public static void main(String[] args) {
+		student s1=()->
+		    "hello";
+		    System.out.print(s1.st1());
+		};
+		
+	}
+
