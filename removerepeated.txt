@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public static String removeChars(String S) {
+        if (S == null || S.length() == 0) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        char prevChar = S.charAt(0);
+        result.append(prevChar);
+
+        for (int i = 1; i < S.length(); i++) {
+            char currentChar = S.charAt(i);
+            if (currentChar != prevChar) {
+                result.append(currentChar);
+            }
+            prevChar = currentChar;
+        }
+
+        return result.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String S = sc.nextLine();
+        String result = Solution.removeChars(S);
+        System.out.println(result);
+    }
+}
