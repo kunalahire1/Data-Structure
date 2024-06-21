@@ -1,0 +1,3 @@
+Sychronous means until the first process is not completed we can not move to the next one
+Asychronous means
+opposite to sychronous
