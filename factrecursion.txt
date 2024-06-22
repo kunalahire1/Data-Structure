@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class Solution {
+    static long factorial(int n) {
+        // Base case: factorial of 1 or 0 is 1
+        if (n <= 1) {
+            return 1;
+        } 
+        // Recursive case: n * factorial of (n-1)
+        else {
+            return n * factorial(n - 1);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.close();
+        
+        Solution solution = new Solution();
+        System.out.println(solution.factorial(n));
+    }
+}
