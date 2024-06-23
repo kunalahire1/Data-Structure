@@ -1,0 +1,53 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+// 		int num=sc.nextInt();
+// 		if(n%2==0){
+// 		    System.out.print("Number is even "+n);
+// 		}
+// 		else System.out.print("Odd");
+
+
+        // if(num>=0){
+        //     System.out.print("number is positive");
+        // }
+        // else System.out.print("Number is negative");
+        
+        
+        // int a=10,b=20,c=a+b;
+        // System.out.print(c);
+        
+        // int num=sc.nextInt();
+        // int j=0;
+        // for(int i=1;i<=num;i++){
+        //     if(num%i==0){
+        //         j=j+1;
+        //     }
+        // }
+        // if(j==2){
+        //     System.out.print("Numer is prime");
+        // }
+        // else System.out.print("Not prime");
+        
+        // int num=sc.nextInt();
+        // int n1=0,n2=1,n3=0;
+        // for(int i=1;i<=num;i++){
+        //     n3=n1+n2;
+        //     n1=n2;
+        //     n2=n3;
+        //      System.out.print(n3+" ");
+        // }
+        //String str="kunal"
+       
+ 
+        
+        
+        
+        
+        
+        
+        
+	}
+}
