@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {   
+    public static int HammingDistance(int x, int y) {
+        int xor = x ^ y;  // XOR the two numbers
+        int distance = 0;
+
+        // Count the number of set bits in the result
+        while (xor != 0) {
+            distance += xor & 1;  // Check if the least significant bit is 1
+            xor >>= 1;  // Right shift by one to check the next bit
+        }
+
+        return distance;
+    } 
+
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in); 
+        int x = sc.nextInt(); 
+        int y = sc.nextInt(); 
+
+        int ans = HammingDistance(x, y); 
+        System.out.println(ans); 
+    }
+}
